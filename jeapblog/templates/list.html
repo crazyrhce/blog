@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+
+<!-- baidu jquery js 文件 -->
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<link rel='stylesheet' href="http://daneden.github.io/animate.css/animate.min.css">
+<script>
+$(document).ready(function(){
+        $("a").mouseover(function(){
+	    var x = "swing";
+	    $(this).addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+         $(this).removeClass(x + ' animated');
+		 });
+		 });
+		 });
+</script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+{%for b in blogs%}
+	{{b.title}}  <br>
+	{{b.content|safe}} <br>
+	{{b.id}}|{{b.create_time|timesince}}
+	<a class="btn btn-danger" href="/delete/{{b.id}}">删除</a>
+	<a class="btn btn-success" href="/blog_update/{{b.id}}">修改</a> <br><br>
+{%endfor %}
+<a class="btn btn-primary" href="/blog_create_form">添加</a> </p>

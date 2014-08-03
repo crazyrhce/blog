@@ -1,0 +1,12 @@
+<meta charset="utf-8">
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>
+        tinymce.init({selector:'textarea'});
+</script>
+
+<form action="/blog_update_save/{{b.id}}" method="POST">
+ {% csrf_token %}
+<label>标题:</label> <input name="title" value="{{b.title}}"> <br>
+<label>内容:</label> <textarea name="content">{{b.content}}</textarea> <br>
+<input type="submit" name="sub" value="提交">
+</form>
